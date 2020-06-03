@@ -1,5 +1,5 @@
 // @flow
-import { compilePath } from 'rudy-match-path'
+import { compilePath } from '../match'
 import { stripBasename } from 'rudy-history/PathUtils'
 import { NOT_FOUND, getOptions } from '../index'
 import objectValues from './objectValues'

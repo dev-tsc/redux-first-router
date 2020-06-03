@@ -1,4 +1,7 @@
 # Redux-First Router
+
+including typescript typings and rudy-match-path (with path-to-regexp 6.1)
+
 Think of your app in terms of _states_, not _routes_ or _components_. Connect your components and just dispatch _Flux Standard Actions_!
 
 <p align="center">

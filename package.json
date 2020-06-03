@@ -1,6 +1,6 @@
 {
-  "name": "redux-first-router",
-  "version": "2.1.1",
+  "name": "@dev-tsc/redux-first-router",
+  "version": "2.1.2",
   "description": "think of your app in states not routes (and, yes, while keeping the address bar in sync)",
   "main": "dist/index.js",
   "module": "dist/es",
@@ -9,21 +9,20 @@
   },
   "scripts": {
     "build": "babel src -d dist",
-    "build:es": "BABEL_ENV=es babel src -d dist/es",
-    "build:umd": "BABEL_ENV=commonjs NODE_ENV=development webpack src/index.js -o dist/redux-first-router.js",
-    "build:umd:min": "BABEL_ENV=commonjs NODE_ENV=production webpack src/index.js -o dist/redux-first-router.min.js",
+    "build:es": "cross-env BABEL_ENV=es babel src -d dist/es",
+    "build:umd": "cross-env BABEL_ENV=commonjs NODE_ENV=development webpack src/index.js -o dist/redux-first-router.js",
+    "build:umd:min": "cross-env BABEL_ENV=commonjs NODE_ENV=production webpack src/index.js -o dist/redux-first-router.min.js",
     "flow-copy": "flow-copy-source src dist",
     "flow-watch": "clear; printf \"\\033[3J\" & npm run flow & fswatch -o ./ | xargs -n1 -I{} sh -c 'clear; printf \"\\033[3J\" && npm run flow'",
     "flow": "npm run flow-copy && flow; test $? -eq 0 -o $? -eq 2",
     "clean": "rimraf dist && mkdir dist && rimraf coverage",
-    "test": "jest",
     "lint": "eslint --fix ./",
     "format": "prettier --single-quote --parser=flow --semi=false --write '{src,__tests__,__test-helpers__}/**/*.js' && npm run lint",
     "cm": "git-cz",
     "semantic-release": "npx semantic-release",
     "standard-version": "node_modules/.bin/standard-version",
     "local-semantic-release": "git checkout master; git pull origin master && npm run standard-version && git push --follow-tags origin master && npm publish",
-    "prepublishOnly": "npm run clean && npm run build && npm run flow-copy && npm run build:umd && npm run build:umd:min && npm run build:es"
+    "prepublishOnly": "npm run clean && npm run build && npm run flow-copy && npm run build:es"
   },
   "repository": {
     "type": "git",
@@ -40,7 +39,7 @@
   "homepage": "https://github.com/faceyspacey/redux-first-router#readme",
   "dependencies": {
     "rudy-history": "^1.0.0",
-    "rudy-match-path": "^0.3.0"
+    "path-to-regexp": "^6.1.0"
   },
   "devDependencies": {
     "babel-cli": "6.26.0",
@@ -54,6 +53,7 @@
     "babel-preset-react": "6.24.1",
     "babel-preset-stage-0": "6.24.1",
     "commitizen": "4.0.3",
+    "cross-env": "7.0.2",
     "cz-conventional-changelog": "3.2.0",
     "eslint": "6.8.0",
     "eslint-config-airbnb": "18.1.0",

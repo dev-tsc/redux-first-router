@@ -1,5 +1,5 @@
 // @flow
-import { compileParamsToPath } from 'rudy-match-path'
+import { compileParamsToPath } from '../match'
 import type {
   Route,
   Payload,
